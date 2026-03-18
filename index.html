@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Adanela Musaraj — Scientific-Policy-Finance Interface Consultant</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d1117;
+    --parchment: #f5f0e8;
+    --ivory: #faf7f2;
+    --gold: #b8964a;
+    --gold-light: #d4af6e;
+    --muted: #6b6560;
+    --rule: #c8bfae;
+    --slide-bg: #0d1117;
+    --slide-text: #f5f0e8;
+    --accent-line: #b8964a;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--ivory);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--ink);
+    padding: 2.4rem 4vw 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    border-bottom: 2px solid var(--gold);
+  }
+  header .eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.6rem);
+    font-weight: 300;
+    color: var(--parchment);
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+  }
+  header h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+  header .subtitle {
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+  }
+  header .contact-line {
+    font-size: 0.62rem;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    margin-top: 0.6rem;
+    font-weight: 500;
+  }
+
+  /* ── CAROUSEL WRAPPER ── */
+  .carousel-section {
+    background: var(--slide-bg);
+    position: relative;
+  }
+
+  /* ── SLIDES ── */
+  .slides-track {
+    display: flex;
+    transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1);
+    will-change: transform;
+  }
+
+  .slide {
+    min-width: 100%;
+    padding: 4rem 8vw 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slide::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .slide-num {
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 1.6rem;
+  }
+
+  .slide h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.7rem, 4vw, 3rem);
+    font-weight: 300;
+    color: var(--parchment);
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+  }
+
+  .slide h2 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .slide-rule {
+    width: 3rem;
+    height: 1px;
+    background: var(--gold);
+    margin: 1.4rem 0;
+  }
+
+  .slide p {
+    font-size: 0.82rem;
+    line-height: 1.85;
+    color: #c4bdb4;
+    max-width: 72ch;
+    margin-bottom: 1.2rem;
+    font-weight: 300;
+  }
+
+  .slide p strong {
+    color: var(--parchment);
+    font-weight: 500;
+  }
+
+  .tag-cluster {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.6rem;
+  }
+
+  .tag {
+    font-size: 0.55rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 0.35rem 0.85rem;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    background: transparent;
+    transition: background 0.25s, color 0.25s;
+  }
+
+  /* ── SERVICE CARDS (slide 2+) ── */
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.4rem;
+    margin-top: 2rem;
+  }
+
+  .service-card {
+    border: 1px solid #2a2825;
+    padding: 1.6rem 1.4rem;
+    position: relative;
+    cursor: default;
+    transition: border-color 0.3s, transform 0.3s;
+    background: #111418;
+  }
+
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width 0.35s ease;
+  }
+
+  .service-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+  }
+
+  .service-card:hover::after { width: 100%; }
+
+  .nace-badge {
+    font-size: 0.5rem;
+    letter-spacing: 0.2em;
+    font-weight: 600;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+
+  .service-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--parchment);
+    margin-bottom: 0.7rem;
+    line-height: 1.25;
+  }
+
+  .service-card p {
+    font-size: 0.72rem;
+    line-height: 1.75;
+    color: #9e978f;
+    margin-bottom: 0;
+  }
+
+  .arbitrage-line {
+    margin-top: 1rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.82rem;
+  }
+
+  .service-items {
+    list-style: none;
+    margin-top: 0.6rem;
+  }
+
+  .service-items li {
+    font-size: 0.7rem;
+    color: #9e978f;
+    line-height: 1.7;
+    padding-left: 0.9rem;
+    position: relative;
+  }
+
+  .service-items li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.6rem;
+  }
+
+  /* ── NAVIGATION ── */
+  .carousel-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.4rem;
+    padding: 1.6rem 4vw;
+    background: var(--ink);
+    border-top: 1px solid #1e1e1a;
+  }
+
+  .nav-btn {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--parchment);
+    background: transparent;
+    border: 1px solid #3a3830;
+    padding: 0.6rem 1.4rem;
+    cursor: pointer;
+    transition: border-color 0.25s, color 0.25s;
+  }
+
+  .nav-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .nav-btn:disabled { opacity: 0.3; cursor: default; }
+
+  .dots {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .dot {
+    width: 5px; height: 5px;
+    background: #3a3830;
+    transition: background 0.3s, transform 0.3s;
+    cursor: pointer;
+  }
+
+  .dot.active { background: var(--gold); transform: scale(1.5); }
+
+  /* ── HOVER GALLERY ── */
+  .gallery-section {
+    background: var(--parchment);
+    padding: 5rem 8vw;
+    border-top: 1px solid var(--rule);
+  }
+
+  .section-label {
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+
+  .gallery-section > h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 300;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    line-height: 1.15;
+  }
+
+  .gallery-section > p {
+    font-size: 0.78rem;
+    color: var(--muted);
+    max-width: 60ch;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+
+  .hover-gallery {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--rule);
+  }
+
+  .gallery-item {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+    cursor: default;
+    overflow: hidden;
+    transition: background 0.35s;
+  }
+
+  .gallery-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 0;
+    background: var(--gold);
+    transition: width 0.3s ease;
+  }
+
+  .gallery-item:hover::before { width: 2px; }
+  .gallery-item:hover { background: rgba(184,150,74,0.04); }
+
+  .gallery-item:hover .gi-title { color: var(--gold); }
+  .gallery-item:hover .gi-detail { opacity: 1; transform: translateY(0); }
+
+  .gi-left { padding-left: 1.5rem; }
+
+  .gi-code {
+    font-size: 0.5rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .gi-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    transition: color 0.3s;
+    line-height: 1.2;
+  }
+
+  .gi-desc {
+    font-size: 0.72rem;
+    color: var(--muted);
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  .gi-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 0.2rem;
+  }
+
+  .gi-detail {
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.35s, transform 0.35s;
+  }
+
+  .gi-detail-label {
+    font-size: 0.5rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+
+  .gi-services {
+    list-style: none;
+  }
+
+  .gi-services li {
+    font-size: 0.68rem;
+    color: var(--ink);
+    line-height: 1.7;
+    padding-left: 0.8rem;
+    position: relative;
+    font-weight: 400;
+  }
+
+  .gi-services li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.6rem;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    border-top: 2px solid var(--gold);
+    padding: 3rem 8vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  footer .f-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--parchment);
+  }
+
+  footer .f-tagline {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  footer .f-contact {
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-top: 0.5rem;
+  }
+
+  footer .f-nace {
+    font-size: 0.58rem;
+    color: #4a4840;
+    line-height: 1.7;
+    margin-top: 1rem;
+    max-width: 70ch;
+    letter-spacing: 0.05em;
+  }
+
+  footer .f-copy {
+    font-size: 0.55rem;
+    color: #3a3830;
+    letter-spacing: 0.1em;
+    margin-top: 1.5rem;
+    text-transform: uppercase;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    header { padding: 1.8rem 5vw 1.5rem; }
+    .slide { padding: 2.5rem 5vw 3rem; }
+    .gallery-section { padding: 3.5rem 5vw; }
+    footer { padding: 2.5rem 5vw; }
+    .gallery-item { grid-template-columns: 1fr; gap: 1rem; }
+    .gi-detail { opacity: 1; transform: none; }
+    .service-grid { grid-template-columns: 1fr; }
+    .carousel-nav { gap: 0.8rem; }
+    .nav-btn { padding: 0.5rem 1rem; font-size: 0.55rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="eyebrow">Scientific — Policy — Finance Interface</div>
+  <h1>Dr. <em>Adanela</em> Musaraj</h1>
+  <div class="subtitle">High-Stakes Knowledge Arbitrage Advisor — Health, Biotechnology & Systems Consultancy</div>
+  <div class="contact-line">adanela.musaraj@yahoo.fr</div>
+</header>
+
+<!-- CAROUSEL -->
+<div class="carousel-section" aria-label="Service carousel">
+  <div class="slides-track" id="slidesTrack">
+
+    <!-- SLIDE 1: Profile -->
+    <div class="slide">
+      <div class="slide-num">01 / 02 — Profile</div>
+      <h2><em>Scientific-Policy-Finance</em><br>Interface Consultant</h2>
+      <div class="slide-rule"></div>
+      <p>
+        Dr. Adanela Musaraj is a senior independent consultant operating at the convergence of scientific evidence, institutional policy, and financial decision-making. She provides <strong>High-Stakes Knowledge Arbitrage Services</strong> to Banks, UN agencies, EU institutions, international NGOs, and Education Industry stakeholders — translating complex disciplinary expertise into actionable intelligence that procurement systems can evaluate, fund, and deploy.
+      </p>
+      <p>
+        Her practice spans four strategic domains: <strong>Health &amp; Biotechnology Systems</strong>, <strong>Food Security &amp; Agri-Food Intelligence</strong>, <strong>Environmental &amp; Climate Data Systems</strong>, and <strong>Education Systems Transformation</strong>. Within each domain she moves fluidly across regulatory science, programme design, impact evaluation, and executive capacity building — serving institutions where the cost of uninformed decisions is measured not in margins but in public outcomes.
+      </p>
+      <p>
+        Classified under NACE M72.10 (Research &amp; Experimental Development in Natural Sciences and Engineering) and anchored in NACE Sections M, P, E and A–D, her engagements address the full arc from evidence generation to institutional adoption. Key service portfolios include: Education Data and Policy Integration (EMIS, decision systems, policy advisory); Digital Transformation of Education Systems (LMS, teacher training, infrastructure); Inclusive and Gender-Responsive Systems; TVET and Labour Market Alignment; Programme Implementation Outsourcing; Food Security Early Warning Systems; Global Commodity and Price Intelligence; Traceability and Supply Chain Transparency; Climate-Agriculture Data Systems; and Agri-Food Data Platform Ownership.
+      </p>
+      <p>
+        Dr. Musaraj brings scientific rigour, institutional fluency, and multilingual diplomatic capability to each mandate — making her the bridge between knowledge systems that rarely speak to one another and the institutions that need them to.
+      </p>
+      <div class="tag-cluster">
+        <span class="tag">Health &amp; Biotech</span>
+        <span class="tag">Food Security</span>
+        <span class="tag">Environment</span>
+        <span class="tag">Education Systems</span>
+        <span class="tag">SDG 4</span>
+        <span class="tag">UN / EU / IFI</span>
+        <span class="tag">NACE M72.10</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 2: Service Portfolios -->
+    <div class="slide">
+      <div class="slide-num">02 / 02 — Service Portfolios</div>
+      <h2>NACE-Coded <em>Service Portfolios</em><br>for Institutional Markets</h2>
+      <div class="slide-rule"></div>
+      <p>Structured intermediate-to-high-stakes consultancy mandates, procurement-ready and aligned to EU/UN/IFI institutional frameworks. Each portfolio delivers a defined arbitrage: translating domain complexity into the language of the buying institution.</p>
+      <div class="service-grid">
+
+        <div class="service-card">
+          <div class="nace-badge">M70.22 · M72.19 · M74.90</div>
+          <h3>Strategic Science &amp; Policy Advisory</h3>
+          <ul class="service-items">
+            <li>Science-to-Policy Translation for EU/UN institutions</li>
+            <li>Regulatory Intelligence: EMA, WHO, FDA alignment</li>
+            <li>Evidence-based risk analysis for biotech/pharma investments</li>
+            <li>Public health strategy design and pandemic preparedness</li>
+          </ul>
+          <div class="arbitrage-line">Science → Policy language → Financial risk frameworks</div>
+        </div>
+
+        <div class="service-card">
+          <div class="nace-badge">M70.22 · Q86.90 · M72.11</div>
+          <h3>Health &amp; Pharma Programme Design</h3>
+          <ul class="service-items">
+            <li>National health programme design and architecture</li>
+            <li>Pharmaceutical supply chain strategy</li>
+            <li>Clinical research ecosystem development</li>
+            <li>Biotech innovation programmes for emerging markets</li>
+          </ul>
+          <div class="arbitrage-line">WHO guidelines → Real-world country implementation</div>
+        </div>
+
+        <div class="service-card">
+          <div class="nace-badge">M70.22 · M72.20</div>
+          <h3>High-Level Evaluation &amp; Impact Assessment</h3>
+          <ul class="service-items">
+            <li>Evaluation of Erasmus+, Horizon Europe projects</li>
+            <li>UN-funded health and education programme evaluation</li>
+            <li>SDG and ESG impact metrics design</li>
+            <li>Scientific validation of project outputs</li>
+          </ul>
+          <div class="arbitrage-line">Scientific rigour → Measurable impact → Funding justification</div>
+        </div>
+
+        <div class="service-card">
+          <div class="nace-badge">K64.99 · M70.22 · M72.19</div>
+          <h3>Scientific Due Diligence for Finance</h3>
+          <ul class="service-items">
+            <li>Due diligence on biotech startups and pharma pipelines</li>
+            <li>Clinical, regulatory and scalability risk analysis</li>
+            <li>Healthtech investment assessment</li>
+            <li>Portfolio advisory for health-focused funds</li>
+          </ul>
+          <div class="arbitrage-line">Lab science → Investment risk language</div>
+        </div>
+
+        <div class="service-card">
+          <div class="nace-badge">J63.99 · M74.90 · M72.19</div>
+          <h3>Knowledge Systems &amp; Standards Development</h3>
+          <ul class="service-items">
+            <li>Technical guidelines in health, biotech, and education</li>
+            <li>Knowledge platforms and institutional repositories</li>
+            <li>Standardisation frameworks and certification schemes</li>
+            <li>Training module design and delivery</li>
+          </ul>
+          <div class="arbitrage-line">Scattered expertise → Institutional knowledge assets</div>
+        </div>
+
+        <div class="service-card">
+          <div class="nace-badge">P85.59 · M70.22</div>
+          <h3>Capacity Building &amp; Executive Training</h3>
+          <ul class="service-items">
+            <li>Executive programmes for government officials and bank analysts</li>
+            <li>Training for UN programme managers</li>
+            <li>Topics: Biotech policy, health systems, regulatory science</li>
+          </ul>
+          <div class="arbitrage-line">Elite knowledge → Institutional capability</div>
+        </div>
+
+        <div class="service-card">
+          <div class="nace-badge">M74.30 · M70.22</div>
+          <h3>Multilingual Negotiation &amp; Technical Advisory</h3>
+          <ul class="service-items">
+            <li>Technical negotiation support for health agreements</li>
+            <li>Research collaboration facilitation</li>
+            <li>Scientific diplomacy: EU–MENA, EU–Africa partnerships</li>
+            <li>Multilingual policy facilitation</li>
+          </ul>
+          <div class="arbitrage-line">Language + Science + Policy negotiation</div>
+        </div>
+
+        <div class="service-card">
+          <div class="nace-badge">M70.22 · M72.11 · J62.01</div>
+          <h3>Innovation Ecosystem &amp; Startup Advisory</h3>
+          <ul class="service-items">
+            <li>University spin-off strategy</li>
+            <li>Biotech incubator design</li>
+            <li>Public-private partnership structuring</li>
+          </ul>
+          <div class="arbitrage-line">Research → Commercialisation → Funding ecosystems</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- NAVIGATION -->
+  <div class="carousel-nav">
+    <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)" disabled>Prev</button>
+    <div class="dots" id="dots">
+      <div class="dot active" onclick="goToSlide(0)"></div>
+      <div class="dot" onclick="goToSlide(1)"></div>
+    </div>
+    <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Next</button>
+  </div>
+</div>
+
+<!-- HOVER GALLERY -->
+<div class="gallery-section">
+  <div class="section-label">Sector Focus — Hover to Expand</div>
+  <h2>Domains of Engagement</h2>
+  <p>Each domain represents a structured market where scientific complexity creates information asymmetry — and where Dr. Musaraj's arbitrage capability delivers decisive institutional advantage.</p>
+
+  <div class="hover-gallery">
+
+    <div class="gallery-item">
+      <div class="gi-left">
+        <div class="gi-code">NACE M72.11 · Q86.90 · M70.22</div>
+        <div class="gi-title">Health &amp; Biotechnology Systems</div>
+        <div class="gi-desc">High-stakes advisory at the intersection of molecular science, pharmaceutical regulation, and public health policy. Serves international banks, sovereign health ministries, UN health agencies, and biotech investment funds requiring scientific translation and programme architecture at institutional scale.</div>
+      </div>
+      <div class="gi-right">
+        <div class="gi-detail">
+          <div class="gi-detail-label">Key Deliverables</div>
+          <ul class="gi-services">
+            <li>National health system design and regulatory alignment</li>
+            <li>Biotech due diligence and investment risk advisory</li>
+            <li>WHO / EMA / FDA regulatory intelligence briefs</li>
+            <li>Pandemic preparedness and biotech sovereignty strategy</li>
+            <li>Clinical ecosystem and supply chain architecture</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <div class="gi-left">
+        <div class="gi-code">NACE A01 · J63.99 · M74.90</div>
+        <div class="gi-title">Food Security &amp; Agri-Food Intelligence</div>
+        <div class="gi-desc">Data-driven advisory on global food systems, commodity intelligence, and agri-food traceability — serving UN agencies (FAO, WFP), EU institutions, and international development banks with decision-grade intelligence on supply chain risk and food policy architecture.</div>
+      </div>
+      <div class="gi-right">
+        <div class="gi-detail">
+          <div class="gi-detail-label">Key Deliverables</div>
+          <ul class="gi-services">
+            <li>Food Security Early Warning System design</li>
+            <li>Global commodity and price intelligence platforms</li>
+            <li>Supply chain traceability frameworks</li>
+            <li>Climate-agriculture data system architecture</li>
+            <li>Agri-food data platform ownership and governance</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <div class="gi-left">
+        <div class="gi-code">NACE E · M72.10 · M70.22</div>
+        <div class="gi-title">Environmental &amp; Climate Data Systems</div>
+        <div class="gi-desc">Institutional advisory on climate risk, environmental data governance, and sustainability reporting — bridging scientific evidence to policy and financial risk frameworks for EU institutions, multilateral development banks, and international environmental agencies.</div>
+      </div>
+      <div class="gi-right">
+        <div class="gi-detail">
+          <div class="gi-detail-label">Key Deliverables</div>
+          <ul class="gi-services">
+            <li>Climate data architecture for institutional decision-making</li>
+            <li>ESG impact metrics design and scientific validation</li>
+            <li>Environmental policy advisory and regulatory alignment</li>
+            <li>Interdisciplinary R&D programme design</li>
+            <li>Crosscutting natural resource governance frameworks</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <div class="gi-left">
+        <div class="gi-code">NACE P85.59 · J63.99 · M70.22</div>
+        <div class="gi-title">Education Systems Transformation</div>
+        <div class="gi-desc">Strategic advisory on the digital and institutional transformation of education systems — serving UNESCO, UNICEF, EU agencies, and bilateral development programmes. From policy architecture to implementation oversight, with a consistent focus on inclusion, gender-responsiveness, and data-driven governance.</div>
+      </div>
+      <div class="gi-right">
+        <div class="gi-detail">
+          <div class="gi-detail-label">Key Deliverables</div>
+          <ul class="gi-services">
+            <li>Education Data and Policy Integration (EMIS, decision systems)</li>
+            <li>Digital transformation: LMS, teacher training, infrastructure</li>
+            <li>Inclusive and gender-responsive education systems</li>
+            <li>TVET and labour market alignment strategies</li>
+            <li>Programme implementation outsourcing and oversight</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-name">Dr. Adanela Musaraj</div>
+  <div class="f-tagline">Scientific-Policy-Finance Interface Consultant — High-Stakes Knowledge Arbitrage</div>
+  <div class="f-contact">adanela.musaraj@yahoo.fr</div>
+  <div class="f-nace">
+    Primary NACE classification: M72.10 — Research &amp; Experimental Development on Natural Sciences and Engineering. Active across Sections M (Professional, Scientific &amp; Technical Activities), P (Education), E (Environmental Services), and A–D (Natural Resources &amp; Energy Systems). Serving Banks, UN agencies, EU institutions, International NGOs, and Education Industry stakeholders.
+  </div>
+  <div class="f-copy">All rights reserved — Dr. Adanela Musaraj</div>
+</footer>
+
+<script>
+  let current = 0;
+  const total = 2;
+  const track = document.getElementById('slidesTrack');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const dots = document.querySelectorAll('.dot');
+
+  function updateCarousel() {
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === total - 1;
+  }
+
+  function changeSlide(dir) {
+    current = Math.max(0, Math.min(total - 1, current + dir));
+    updateCarousel();
+  }
+
+  function goToSlide(n) {
+    current = n;
+    updateCarousel();
+  }
+
+  // Touch/swipe support
+  let touchStartX = 0;
+  const section = document.querySelector('.carousel-section');
+  section.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+  section.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) changeSlide(dx < 0 ? 1 : -1);
+  }, { passive: true });
+</script>
+</body>
+</html>
